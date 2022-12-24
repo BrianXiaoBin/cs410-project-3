@@ -31,6 +31,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  // Declare an AtKey
   AtKey MyAtkey = AtKey()..key = 'distance';
   int _counter = 0;
 
@@ -41,8 +42,10 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   Future<int?> getcount() async {
+    // Get the AtClient from AtClientManager
     AtClientManager atClientManager = AtClientManager.getInstance();
     var atClient = atClientManager.atClient;
+    // Get a value from an AtKey
     AtValue val = await atClient.get(MyAtkey);
     setState(() {
       _counter = val.value;
